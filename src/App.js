@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHighlighter } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
 
 function App() {
+  const [count, setCount ] = useState(0)
+
+  function startClock () {
+    setInterval(function() { setCount(count + 1)}, 1000)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main>
+        <p>Count: {count}</p>
+        <button onClick={() => setCount(count + 1)}>
+          <FontAwesomeIcon icon={faHighlighter} size="6x" />
+          Annotate
+        </button>
+      </main>
+      
     </div>
   );
 }
